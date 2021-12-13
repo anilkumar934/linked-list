@@ -1,0 +1,39 @@
+#include<stdio.h>
+#include<stdlib.h>
+typedef struct node
+{
+    int data;
+    struct node *link;
+}N;
+N* add(N *ptr,int n)
+{
+    N *temp=(N *)malloc(sizeof(N));
+    temp->data=n;
+    temp->link=NULL;
+    ptr->link=temp;
+    return temp;
+}
+int main()
+{
+    printf("how many nodes you want ");
+    int n;
+    scanf("%d",&n);
+    N *a=(N *)malloc(sizeof(N));
+    printf("\nenter element 1 of list : ");
+    scanf("%d",a);
+    a->link=NULL;
+    int b[100],i;
+    N *ptr=a;
+    for(i=2;i<=n;i++)
+    {
+        printf("\nenter element %d of list : ",i);
+        scanf("%d",b[i]);
+        ptr=add(ptr,b[i]);
+    }
+    ptr=a;
+    while(ptr!=NULL)
+    {
+        printf("%d ",ptr->data);
+        ptr=ptr->link;
+    }
+}
