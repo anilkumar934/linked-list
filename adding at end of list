@@ -1,0 +1,39 @@
+#include<stdio.h>
+#include<stdlib.h>
+typedef struct node
+{
+    int data;
+    struct node *link;
+}N;
+int add(N *p,int n)
+{
+    N *ptr,*temp;
+    ptr=p;
+    temp=malloc(sizeof(N));
+    temp->data=n;
+    temp->link=NULL;
+    while(ptr->link!=NULL)
+    {
+        ptr=ptr->link;
+    }
+    ptr->link=temp;
+}
+int main()
+{
+    N *a=malloc(sizeof(N));
+    a->data=11;
+    a->link=NULL;
+    N *b=malloc(sizeof(N));
+    b->data=30;
+    b->link=NULL;
+    a->link=b;
+    N *c=malloc(sizeof(N));
+    c->data=34;
+    c->link=NULL;
+    b->link=c;
+    printf("enter a number to add\n");
+    int n;
+    scanf("%d",&n);
+    add(a,n);
+    printf("%d",c->link->data);
+}
